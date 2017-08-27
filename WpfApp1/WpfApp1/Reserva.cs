@@ -8,5 +8,15 @@ namespace WpfApp1
 {
     public struct Reserva
     {
+        private Localizacion Destino;
+        private Localizacion Salida;
+        private DateTime fecha;
+    }
+
+    public Localizacion Destino {
+        get;set;
+    }
+    public Localizacion Salida {
+        get;set;
     }
 }

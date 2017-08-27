@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    class Localizacion
+    public struct Localizacion
+        public string Estado { get; set; }
     {
     }
 }
