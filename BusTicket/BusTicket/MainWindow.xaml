@@ -10,7 +10,16 @@
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TICKETS PARA VIAJES" VerticalAlignment="Top" Height="41" Width="497" FontSize="22" FontWeight="Bold"/>
         <TabControl HorizontalAlignment="Left" Height="253" Margin="10,56,0,0" VerticalAlignment="Top" Width="497">
             <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+                <StackPanel>
+                    <Label Content="Origen"></Label>
+                    <ComboBox x:Name="Origen" ></ComboBox>
+                    <Label Content="Destino"></Label>
+                    <ComboBox x:Name="Destino"></ComboBox>
+                    <Label Content="Fecha"></Label>
+                    <DatePicker x:Name="DiaViaje"></DatePicker>
+                    <Button Content="Buscar" Click="Button_Click"></Button>
+                    <ListView x:Name="LVResultados" Height="58"></ListView>
+                </StackPanel>
             </TabItem>
             <TabItem Header="TabItem">
                 <StackPanel Orientation="Horizontal" Background="#FFE5E5E5">
