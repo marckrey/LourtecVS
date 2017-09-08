@@ -1,6 +1,7 @@
 ﻿using BusTicket.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,23 +29,7 @@ namespace BusTicket
         public List<Localizacion> Estaciones { get; set; }
         public MainWindow()
         {
-            Estaciones = new List<Localizacion>()
-            {
-                new Localizacion()
-                {
-                    Ciudad = "Lima",
-                    Estacion = "Lima Central",
-                    Estado = "Lima",
-                    Pais = "Peru",
-                },
-                new Localizacion()
-                {
-                    Ciudad = "Trujillo",
-                    Estacion ="Central Trujillo",
-                    Estado = "Trujillo",
-                    Pais = "Peru",
-                }
-            };
+            Estaciones = CargarEstaciones();
 
             Reserva = new Reserva()
             {
@@ -100,6 +85,14 @@ namespace BusTicket
             query = Rutas.Where(g => true).Select(g => g);
             Resultados = query.ToList();
             LVResultados.ItemsSource = Resultados;
+        }
+
+        List<Localizacion> CargarEstaciones()
+        {
+            string filepath = ConfigurationManager.AppSettings.Get("RutaDatos") + "Localizacion.xml";
+            Funciones fn = new Funciones();
+            fn.XmlSerializarLista(filepath);
+            return fn.XmlDeserializar(filepath);
         }
     }
 }
